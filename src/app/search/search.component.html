@@ -1,0 +1,41 @@
+<div class="{{cssData.color}}">
+    <div class="container-fluid ">
+        <div [class]="cssData">
+
+            <div class="col-12 modifi">
+                <div class="d-flex justify-content-end">
+                    <button class="btn bg-danger my-2 my-sm-0" (click)="changeTheme()">Elegir Tema</button>
+                    <button class="btn bg-warning mr-4 my-sm-0" (click)="logout()">Cerrar sesion</button>
+                </div>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-8 mt-4">
+                <h2 style="color: white;">Ingrese un usuario a buscar:</h2>
+                <div class="form-group d-flex justify-content-center">
+                    <input class="form-control" [formControl]="nameUser" type="text">
+                    <button [disabled]="nameUser.invalid" class="btn btn-outline-light"
+                        (click)="search()">Buscar</button>
+                </div>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="d-flex justify-content-center">
+                    <div *ngIf="userData" class="card mb-4 " style="width: 18rem;">
+                        <img [src]="userData.avatar_url" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h2 class="card-title">{{userData.login}}</h2>
+                            <p class="card-text">
+                                <strong>Repositorios:</strong><span>{{' ' + userData.public_repos}}</span>
+                                <br>
+                                <strong>Followers :</strong><span>{{' ' + userData.followers }}</span>
+                            </p>
+                            <a href="{{userData.html_url}}" target="_blank" class="btn btn-primary">Ver Usuario</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</div>

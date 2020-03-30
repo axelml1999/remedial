@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row maximo {{cssData.background + ' ' + cssData.texto}}">
+        
+        <div class="col-2"></div>
+        <div class="col-8">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1>Registrate</h1>
+            <form [formGroup]="form" (ngSubmit)="register($event)">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" placeholder="Enter email">
+                    <div *ngIf="form.get('email').invalid && (form.get('email').dirty || form.get('email').touched)">
+                        <div *ngIf="form.get('email').hasError('required')" class="alert alert-danger">
+                            EMAIL IS REQUIRED
+                        </div>
+                        <div *ngIf="form.get('email').hasError('email')" class="alert alert-danger">
+                            EMAIL IS INVALID
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1"
+                        placeholder="Password">
+                    <div
+                        *ngIf="form.get('password').invalid && (form.get('password').dirty || form.get('password').touched)">
+                        <div *ngIf="form.get('password').hasError('required')" class="alert alert-danger">
+                            PASSWORD IS REQUIRED
+                        </div>
+                        <div *ngIf="form.get('password').hasError('minlength')" class="alert alert-danger">
+                            MINIMO 6 CARACTERES
+                        </div>
+                    </div>
+                </div>
+                <button [disabled]="form.invalid" type="submit" class="btn btn-warning">Registrate</button>
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
